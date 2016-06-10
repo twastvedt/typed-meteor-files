@@ -1,0 +1,15 @@
+{
+  "name": "typed-meteor-files",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Typescript typings for the meteor atmosphere package ostrio:files.",
+  "main": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Trygve Wastvedt (trygve.wastvedt@gmail.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "typings": "^1.0.4"
+  }
+}

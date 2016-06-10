@@ -37,7 +37,7 @@ interface FilesCollectionConfig {
 	* Collection Schema.
 	* @default '272144'
 	* */
-	schema?: Object;
+	schema?: any;
 
 	/*
 	* Function to name files.
@@ -79,7 +79,7 @@ interface FilesCollectionConfig {
 	* Return false to abort download, true to continue.
 	@default false
 	* */
-	downloadCallback?: (fileObj: Object) => boolean;
+	downloadCallback?: (fileObj: any) => boolean;
 
 	/*
 	* Control download flow.
@@ -92,7 +92,7 @@ interface FilesCollectionConfig {
 	* Return true to continue, false to abort, or {Number} to abort upload with specific response code, default response code is 401.
 	@default false
 	* */
-	protected?: boolean | {function (fileObj: Object): boolean | number};
+	protected?: boolean | {function (fileObj: any): boolean | number};
 
 	/*
 	* Allows to place files in public directory of your web-server and let your web-server to serve uploaded files.
@@ -108,7 +108,6 @@ interface FilesCollectionConfig {
 
 	/*
 	* Callback, triggered right before upload is started on client and right after receiving a chunk on server.
-	* Arguments: fileData {Object} - Current file metadata
 	* Context:
 	* 	this.file
 	* 	this.user()
@@ -119,11 +118,10 @@ interface FilesCollectionConfig {
 	* note: Because sending meta data as part of every chunk would hit the performance, meta is always empty ({}) except on the first chunk (chunkId=1) and on eof (eof=true).
 	* @default false
 	* */
-	onBeforeUpload?: (fileData: Object) => boolean | string;
+	onBeforeUpload?: (fileData: any) => boolean | string;
 
 	/*
 	* Callback, triggered right before remove file
-	* Arguments: cursor {MongoCursor} - Current files to be removed on cursor, if has any
 	* Context:
 	* 	this.file
 	* 	this.user()
@@ -136,11 +134,10 @@ interface FilesCollectionConfig {
 
 	/*
 	* Callback, triggered after file is written to FS.
-	* Arguments: fileRef {Object} - Record from MongoDB
 	* Alternatively use: addListener('afterUpload', func).
 	* @default false
 	* */
-	onAfterUpload?: (fileRef: Object) => any;
+	onAfterUpload?: (fileRef: any) => any;
 
 	/*
 	* Message shown to user when closing browser's window or tab, while upload in the progress.
@@ -165,11 +162,10 @@ interface FilesCollectionConfig {
 	* Arguments: http {Object} - Middleware request instance
 	* 	http.request {Object} - example: http.request.headers
 	* 	http.response {Object} - example: http.response.end()
-	* 	fileRef {Object} - Current file record from MongoDB
 	* version {String} - Requested file version
 	* Usage example: Serve file from third-party resource.
 	* Return false from this function to continue standard behavior, true to intercept incoming request.
 	* @default false
 	* */
-	interceptDownload?: (http: Object, fileRef: Object, version: string) => boolean;
+	interceptDownload?: (http: any, fileRef: any, version: string) => boolean;
 }

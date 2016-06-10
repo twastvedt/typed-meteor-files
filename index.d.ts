@@ -1,5 +1,3 @@
-import { Mongo } from 'meteor/mongo';
-
 declare class FilesCollection extends Mongo.Collection<any> {
 	constructor(config?: FilesCollectionConfig)
 }
